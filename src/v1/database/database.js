@@ -5,3 +5,4 @@ const dbconnection = mysql.createConnection({
   password: 'p@ssw0rd145',
   database: 'schooldir',
 });
+dbconnection.connect();
