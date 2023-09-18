@@ -38,3 +38,9 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.send('Welcome to the my API. Visit /jokes to see the list.');
 });
+
+// Define a route to retrieve all jokes
+app.get('/jokes', (req, res) => {
+  const joke = jokes[Math.floor(Math.random() * jokes.length)];
+  res.send(joke);
+});
