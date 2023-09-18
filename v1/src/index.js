@@ -15,3 +15,5 @@ let jokes = [
     { id: 5, joke: "What do you call a pile of cats? A meowntain." },
     { id: 6, joke: "What do you get when you cross a snowman and a vampire? Frostbite." }
   ];
+
+  app.use(cors());
