@@ -48,7 +48,7 @@ app.get('/jokes', (req, res) => {
 app.get('/randomjoke', (req, res) => {
   const joke = jokes[Math.floor(Math.random() * jokes.length)];
   res.send(joke);
-}
+});
 
 // Define a route to add a new joke
 app.post('/jokes', (req, res) => {
@@ -72,7 +72,7 @@ app.delete('/jokes/:id', (req, res) => {
   const jokeId = req.params.id;
 
   // Find the joke with the matching id
-  const jokeIndex = jokes.findIndex(joke => joke.id == jokeId;
+  const jokeIndex = jokes.findIndex(joke => joke.id == jokeId);
 
   // Remove the joke from the array
   jokes.splice(jokeIndex, 1);
