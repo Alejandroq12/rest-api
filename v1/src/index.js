@@ -49,3 +49,20 @@ app.get('/randomjoke', (req, res) => {
   const joke = jokes[Math.floor(Math.random() * jokes.length)];
   res.send(joke);
 }
+
+// Define a route to add a new joke
+app.post('/jokes', (req, res) => {
+  // Generate a new id for the joke
+  const newId = jokes[jokes.length - 1].id + 1;
+
+  // Get the joke from the request body
+  const joke = req.body;
+
+    // Output the joke to the console for debugging
+    console.log(joke);
+    jokes.push({ id: newId, joke: joke });
+
+    // res.send('A new joke has been added to the array.');
+    res.send({ id: newId, joke: joke });
+});
+    
