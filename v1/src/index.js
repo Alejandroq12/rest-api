@@ -41,6 +41,5 @@ app.get('/', (req, res) => {
 
 // Define a route to retrieve all jokes
 app.get('/jokes', (req, res) => {
-  const joke = jokes[Math.floor(Math.random() * jokes.length)];
-  res.send(joke);
+  res.send(jokes);
 });
