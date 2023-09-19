@@ -65,4 +65,21 @@ app.post('/jokes', (req, res) => {
     // res.send('A new joke has been added to the array.');
     res.send({ id: newId, joke: joke });
 });
-    
+
+// Define a route to delete a joke
+app.delete('/jokes/:id', (req, res) => {
+  // Get the joke ID from the request parameters
+  const jokeId = req.params.id;
+
+  // Find the joke with the matching id
+  const jokeIndex = jokes.findIndex(joke => joke.id == jokeId;
+
+  // Remove the joke from the array
+  jokes.splice(jokeIndex, 1);
+
+  // Send a message as a response
+  res.send({ message: "Joke deleted successfully" });
+});
+
+// Start the REST API server
+app.listen(port, () => console.log(`Jokes API listening on port ${port}!`));
