@@ -44,7 +44,42 @@ app.get('/jokes', (req, res) => {
   res.send(jokes);
 });
 
-// Define a route to retrive a random joke
-app.get('/randomjokes', (req, res) => {
-  const joke = jokes[Math.floor(Math.random())]
-})
+// Define a route to retrieve a random joke
+app.get('/randomjoke', (req, res) => {
+  const joke = jokes[Math.floor(Math.random() * jokes.length)];
+  res.send(joke);
+});
+
+// Define a route to add a new joke
+app.post('/jokes', (req, res) => {
+  // Generate a new id for the joke
+  const newId = jokes[jokes.length - 1].id + 1;
+
+  // Get the joke from the request body
+  const joke = req.body;
+
+    // Output the joke to the console for debugging
+    console.log(joke);
+    jokes.push({ id: newId, joke: joke });
+
+    // res.send('A new joke has been added to the array.');
+    res.send({ id: newId, joke: joke });
+});
+
+// Define a route to delete a joke
+app.delete('/jokes/:id', (req, res) => {
+  // Get the joke ID from the request parameters
+  const jokeId = req.params.id;
+
+  // Find the joke with the matching id
+  const jokeIndex = jokes.findIndex(joke => joke.id == jokeId);
+
+  // Remove the joke from the array
+  jokes.splice(jokeIndex, 1);
+
+  // Send a message as a response
+  res.send({ message: "Joke deleted successfully" });
+});
+
+// Start the REST API server
+app.listen(port, () => console.log(`Jokes API listening on port ${port}!`));
